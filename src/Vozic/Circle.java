@@ -52,7 +52,7 @@ public class Circle extends ComplexBody {
 	 * @return Extent/Scope of circle
 	 */
 	@Override
-	public double extentBody (){
+	public double extentBody(){
 		return 2*this.r*Math.PI;
 	}
 

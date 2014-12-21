@@ -43,21 +43,13 @@ public class ComplexBody {
 	private int size;
 
 	public ComplexBody() {
-		shapes = new ComplexBody[2];
+		
+//		shapes = new ComplexBody[2];   //prethodno sam ovako napisala
+		
+		this.shapes= new ComplexBody[0];
 		this.size = 0;
 	}
 
-	/**
-	 * Method for Area of circle
-	 * 
-	 * @param r
-	 *            = radius of circle
-	 * @return Area of circle
-	 */
-
-	public double areaCircle(double r) {
-		return r * r * Math.PI;
-	}
 
 	@Override
 	public String toString() {
@@ -69,18 +61,38 @@ public class ComplexBody {
 		return str;
 	}
 	
+	public void addPart(ComplexBody newComplexBody){
+		size++;
+		ComplexBody[] temp = new ComplexBody[size];
+		for (int i = 0; i<shapes.length; i++){
+			temp[i]=shapes[i];
+		}
+		temp[temp.length-1]=newComplexBody;
+		shapes=temp;
+	}
+	
 	/**
 	 * Method for adding Circles in array of ComplexBody
 	 * @param newCircle = object Circle that we are adding
 	 */
 
 	public void addPart(Circle newCircle) {
-		shapes[size] = newCircle;
+		size++;
+		ComplexBody[] temp = new ComplexBody[size];
+		for (int i = 0; i<shapes.length; i++){
+			temp[i]=shapes[i];
+		}
+		temp[temp.length-1]=newCircle;
+		shapes=temp;
+		
+		// prethodno napisano
+		
+		/*shapes[size] = newCircle;
 		size++;
 
 		if (size == shapes.length) {
 			resizeShapes();
-		}
+		}*/
 		
 	}
 	
@@ -90,11 +102,21 @@ public class ComplexBody {
 	 */
 
 	public void addPart(Square newSquare) {
-		shapes[size] = newSquare;
+		size++;
+		ComplexBody[] temp = new ComplexBody[size];
+		for (int i = 0; i<shapes.length; i++){
+			temp[i]=shapes[i];
+		}
+		temp[temp.length-1]=newSquare;
+		shapes=temp;
+		
+		// prethodno napisano
+		
+		/*shapes[size] = newSquare;
 		size++;
 		if (size == shapes.length) {
 			resizeShapes();
-		}
+		}*/
 	}
 
 	/**
@@ -102,15 +124,25 @@ public class ComplexBody {
 	 * @param newRectangle = object Rectangle that we are adding
 	 */
 	public void addPart(Rectangle newRectangle) {
-		shapes[size] = newRectangle;
+		size++;
+		ComplexBody[] temp = new ComplexBody[size];
+		for (int i = 0; i<shapes.length; i++){
+			temp[i]=shapes[i];
+		}
+		temp[temp.length-1]=newRectangle;
+		shapes=temp;
+		// prethodno napisano
+		
+	/*	shapes[size] = newRectangle;
 		size++;
 		if (size == shapes.length) {
 			resizeShapes();
 		}
+		*/
 	}
 
 	/**
-	 * Method of resizeing arry
+	 * Method of resizeing array of shapes
 	 */
 	private void resizeShapes() {
 		int newLength = 2* shapes.length;
@@ -137,6 +169,17 @@ public class ComplexBody {
 	 */
 	public double areaBody(){
 		return 0;
+	}
+	/**
+	 * Method for sum of area of different ComplexBodys that are in array ComplexBody
+	 * @return = sum of area of different object
+	 */
+	public double getSumAreaComplexBodys() {
+		double sumArea=0;
+		for (int i = 0; i < shapes.length; i++) {
+			sumArea += shapes[i].getSumArea();
+		}
+		return sumArea;
 	}
 	
 	/**
