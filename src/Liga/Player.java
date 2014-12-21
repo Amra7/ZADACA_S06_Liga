@@ -1,3 +1,4 @@
+package Liga;
 /**
  * Klasa player (igrac) koja u seb sadrzi ime igraca, prezime i broj koji igrac
  * noci
@@ -5,21 +6,39 @@
  * @author Amra
  *
  */
-public class Player extends Ratings {
+public class Player  {
 
 	private String name;
 	private String surname;
 	private int num;
+	private Ratings ratings;
+	/
+	**
+	 * Konstruktor player
+	 */
+	public Player( Player other) {
+		this.name = other.name;
+		this.surname = other.surname;
+		this.num = other.num;
+		ratings= new Ratings();
+	}
 
 	/**
 	 * Konstruktor koji prima ime, prezime i broj igraca i fromira igraca
 	 */
-	public Player(double speed, double pass, double headHitting,
-			double shooting, String name, String surname, int num) {
-		super(speed, pass, headHitting, shooting);
+	public Player( String name, String surname, int num) {
 		this.name = name;
 		this.surname = surname;
 		this.num = num;
+		ratings= new Ratings();
+	}
+
+	public Ratings getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(Ratings ratings) {
+		this.ratings = ratings;
 	}
 
 	/**

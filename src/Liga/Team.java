@@ -1,3 +1,4 @@
+package Liga;
 import java.util.Arrays;
 /**
  * Klasa Team(Tim) koja u sebi sadrzi tim igraca,  ime tima, grad iz kojeg je tim
@@ -13,12 +14,21 @@ public class Team {
 	private Person [] staff;
 	private int numStaff;
 	
+	public Team (String nameTeam,String cityOfTeam){
+		tim = new Player [11];
+		this.nameTeam=nameTeam;
+		this.cityOfTeam=cityOfTeam;
+		this.staff= new Person [2];
+		this.numStaff=0;
+				
+	}
 	/**
 	 * Konstruktor koji pravi tim
 	 * @param tim = niz igraca koji su u timu
 	 * @param nameTeam = ime tima
 	 */
-	public Team (Player [] tim, String nameTeam){
+	public Team ( Player [] tim, String nameTeam,String cityOfTeam,String name, String surname, String contact, String roleInTeam){
+		super();
 		tim = new Player [11];
 		this.nameTeam=nameTeam;
 		this.cityOfTeam=cityOfTeam;
@@ -32,17 +42,17 @@ public class Team {
 	 * @param surname = prezime igraca
 	 * @param num = broj igraca
 	 */
-	public void addPlayer (double speed, double pass, double headHitting, double shooting, String name, String surname, int num){
+	public void addPlayer ( Player other){
 		for( int i=0; i<11; i++){
-			tim [i] = new Player ( speed, pass,headHitting, shooting, name,surname, num);	
+			tim [i] = new Player (other);	
 		}
 		
 	}
 	
-	public double payersRatings(Player [] tim){
+	public double palyersRatings(Player [] tim){
 		double sumRatInTeam = 0;
-		for ( int i=0; i<tim.length; i++){
-			sumRatInTeam+=tim[i].sumRatings();
+		for ( int i=0; i < tim.length; i++){
+			sumRatInTeam+= tim[i].sumRating();
 		}
 		return sumRatInTeam;
 	}

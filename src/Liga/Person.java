@@ -1,4 +1,10 @@
-
+package Liga;
+/**
+ * Klasa Person(osoba) predstavlja ljude koji rade u timu
+ * Sastoji se od ime osobe, preszime osobe, kontakt( email) i uloge koju radi u timu
+ * @author Amra
+ *
+ */
 public class Person {
 
 	private String name;
